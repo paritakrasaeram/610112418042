@@ -1,0 +1,17 @@
+version: '2'
+
+service:
+  ftpd_server:
+    image: stilliard/pure-ftpd:hardened
+    container_name: pure-ftpd
+    ports:
+      - "21:21"
+      - "30000-30009:30000-30009"
+    volumes:
+      - "./data:/home/049"
+    environment:
+      PUBLICHOST: "10.133.1.237"
+      FTP_USER_NAME: 049
+      FTP_USER_PASS: 1234
+      FTP_USER_HOME: /home/049
+    restart: always
